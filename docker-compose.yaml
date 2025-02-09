@@ -1,0 +1,11 @@
+services:
+  http:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        SERVICE: http
+    ports:
+      - 8080:8080
+    volumes:
+      - ./service/http:/app
