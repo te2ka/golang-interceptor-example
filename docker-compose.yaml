@@ -8,4 +8,5 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./service/http:/app
+      - ./service/http:/app/service/http
+      - ./utils:/app/utils

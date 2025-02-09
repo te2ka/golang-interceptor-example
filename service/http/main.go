@@ -1,19 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
+
+	"github.com/te2ka/golang-interceptor-example/service/http/server"
 )
 
 func main() {
-	server := http.Server{
+	s := http.Server{
 		Addr:    ":8080",
 		Handler: nil,
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, world\n")
-	})
+	server.Setup()
 
-	server.ListenAndServe()
+	s.ListenAndServe()
 }
