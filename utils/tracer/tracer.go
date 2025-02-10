@@ -15,5 +15,6 @@ func WithTraceID(ctx context.Context) context.Context {
 }
 
 func GetTraceID(ctx context.Context) string {
-	return ctx.Value(traceIDKey).(string)
+	traceID, _ := ctx.Value(traceIDKey).(string)
+	return traceID
 }

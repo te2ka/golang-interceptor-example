@@ -12,14 +12,13 @@ func init() {
 	handler := &logHandler{
 		slog.NewJSONHandler(os.Stdout, nil),
 	}
-	Logger = slog.New(handler)
+	logger := slog.New(handler)
+	slog.SetDefault(logger)
 }
 
 type logHandler struct {
 	slog.Handler
 }
-
-var Logger *slog.Logger
 
 func (h *logHandler) Handle(ctx context.Context, r slog.Record) error {
 	r.AddAttrs(slog.String("trace_id", tracer.GetTraceID(ctx)))

@@ -1,18 +1,12 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/te2ka/golang-interceptor-example/service/http/server"
+	_ "github.com/te2ka/golang-interceptor-example/utils/log"
 )
 
 func main() {
-	s := http.Server{
-		Addr:    ":8080",
-		Handler: nil,
-	}
-
-	server.Setup()
+	s := server.NewServer(8080)
 
 	s.ListenAndServe()
 }
